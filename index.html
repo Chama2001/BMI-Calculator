@@ -69,7 +69,47 @@
     </div>
 
     <script>
-        // Step 2 හි JavaScript කේතය මෙතැනට ඇතුළත් කරනු ලැබේ
+    function calculateBMI() {
+    // බර (kg) සහ උස (cm) ලබා ගැනීම
+    const weight = document.getElementById('weight').value;
+    const heightCm = document.getElementById('height').value;
+    const resultDiv = document.getElementById('result');
+
+    // අගයන් නිවැරදිව දීලා තියෙනවද බැලීම
+    if (weight === '' || heightCm === '' || weight <= 0 || heightCm <= 0) {
+        resultDiv.style.color = 'red';
+        resultDiv.innerHTML = "කරුණාකර సరైన අගයන් ඇතුළත් කරන්න!";
+        return;
+    }
+
+    // උස සෙන්ටිමීටර වලින් මීටර වලට හැරවීම (උදා: 170cm -> 1.7m)
+    const heightM = heightCm / 100;
+
+    // BMI සූත්‍රය: බර / (උස වර්ගය)
+    const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+    // සෞඛ්‍ය තත්ත්වය තීරණය කිරීම
+    let status = "";
+    let color = "";
+
+    if (bmi < 18.5) {
+        status = "কম බර (Underweight)";
+        color = "orange";
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+        status = "සාමාන්‍ය බර (Normal weight)";
+        color = "green";
+    } else if (bmi >= 25 && bmi.toFixed(1) <= 29.9) {
+        status = "අධික බර (Overweight)";
+        color = "peru";
+    } else {
+        status = "স্থূলභාවය / අධික ස්ථූලතාව (Obese)";
+        color = "red";
+    }
+
+    // ප්‍රතිඵලය screen එකේ පෙන්වීම
+    resultDiv.style.color = color;
+    resultDiv.innerHTML = `Your BMI: ${bmi}<br>Status: ${status}`;
+}
     </script>
 
 </body>
