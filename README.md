@@ -1,4 +1,4 @@
-# Simple BMI Calculator 🧮
+# Simple BMI Calculator. 🧮
 
 A lightweight and minimalist Body Mass Index (BMI) calculator web application built with HTML, CSS, and JavaScript. It helps users quickly calculate their BMI based on weight in kilograms and height in centimeters, and instantly classifies their health status.
 
